@@ -7,14 +7,17 @@ builder.Services.AddMvc(MvcOptions => MvcOptions.EnableEndpointRouting=false).Ad
 builder.Services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>(); 
 #endregion
 var app = builder.Build();
-#region Middel
-app.UseStaticFiles();
-app.MapGet("/", () => "Employee Management");
-DeveloperExceptionPageOptions options = new DeveloperExceptionPageOptions();
-options.SourceCodeLineCount = 5;
-app.UseDeveloperExceptionPage(options);//for error         
+#region Middelware
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();    
+}
+
 app.UseFileServer();//UseDefaultFiles+UseStaticFiles
-app.UseMvcWithDefaultRoute();
+app.UseMvc(routes => routes.MapRoute(name: "default", template: "{controller=home}/{action=index}/{id?}"));
+
+    
+//app.UseMvcWithDefaultRoute();
 
 app.Run();
 #endregion
