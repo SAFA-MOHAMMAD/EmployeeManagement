@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Emploeey>
+﻿@model IEnumerable<Employee>
 @{
     ViewBag.Title = "Employee List";
 }
@@ -10,7 +10,7 @@
                 </div>
                 <img class="card-img-top imageThumbnail" src="~/images/noimage.jpg"asp-append-version="true"/>
                 <div class="card-footer text-center">
-                    <a asp-action="Detalis" asp-controller="Home"asp-route-id="@employee.Id" class="btn btn-primary">View</a>
+                    <a asp-action="Details" asp-controller="Home"asp-route-id="@employee.Id" class="btn btn-primary">View</a>
                     <a href="#" class="btn btn-primary">Edit</a>
                     <a href="#" class="btn btn-danger">Delete</a>
 
