@@ -2,7 +2,7 @@
 
 namespace EmployeeManagement.Controllers
 {
-    public class EmployeeController 
+    public class EmployeeController
     {
         [Route("[controller]/[action]")]
         public string List()

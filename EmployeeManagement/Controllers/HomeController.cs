@@ -4,16 +4,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagement.Controllers
 {
-   
+
     public class HomeController : Controller
     {
-        private readonly IEmployeeRepository _employeeRepository;   
+        private readonly IEmployeeRepository _employeeRepository;
         public HomeController(IEmployeeRepository employeeRepository)
         {
             _employeeRepository = employeeRepository;
         }
-        
-        
+
+
         public ViewResult Index()
         {
             var employee = _employeeRepository.GetAllEmployee();
@@ -30,10 +30,22 @@ namespace EmployeeManagement.Controllers
             };
             return View(homeDetailsViewModel);
         }
+        [HttpGet]
         public ViewResult Create()
         {
             Employee emploeey = new();
-            return View(emploeey);  
+            return View(emploeey);
+        }
+        [HttpPost]
+        public IActionResult Create(Employee employee)
+        {
+            if (ModelState.IsValid)
+            {
+                Employee newEmployee = _employeeRepository.add(employee);
+                return RedirectToAction("Details", new { Id = newEmployee.Id });
+            }
+            return View();
         }
     }
 }
+
