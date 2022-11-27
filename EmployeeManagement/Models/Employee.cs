@@ -14,6 +14,8 @@ namespace EmployeeManagement.Models
         [RegularExpression(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$",ErrorMessage ="Invalid Email format")]
         public String Email { get; set; }
         [Required]
-        public Dept? Department { get; set; } 
+        public Dept? Department { get; set; }
+
+        public string? PhotoPath  { get; set; }
     }
 }
