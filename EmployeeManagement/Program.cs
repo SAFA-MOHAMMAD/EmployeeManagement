@@ -15,6 +15,10 @@ if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();    
 }
+else
+{
+    app.UseStatusCodePagesWithRedirects("/Error/{0}");
+}
 
 app.UseFileServer();//UseDefaultFiles+UseStaticFiles
 app.UseMvc(routes => routes.MapRoute(name: "default", template: "{controller=home}/{action=index}/{id?}"));
