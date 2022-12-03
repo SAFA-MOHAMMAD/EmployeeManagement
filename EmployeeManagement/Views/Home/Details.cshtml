@@ -13,7 +13,7 @@
                 <img class="card-img-top imageThumbnail " src="@photoPath" asp-append-version="true" />
                 <h4>Employee ID : @Model.Employee.Id</h4>
                 <h4>Email : @Model.Employee.Email</h4>
-                <h4>Department : @Model.Employee.Department</h4>
+                <h4>Department : @Model.Employee.Department.Name</h4>
             </div>
             <div class="card-footer text-center">
                 <a asp-action="Index" asp-controller="Home" class="btn btn-primary">Back</a>

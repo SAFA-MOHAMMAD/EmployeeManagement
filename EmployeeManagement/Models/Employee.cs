@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EmployeeManagement.Models
 {
@@ -13,8 +14,9 @@ namespace EmployeeManagement.Models
         [Required]
         [RegularExpression(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$",ErrorMessage ="Invalid Email format")]
         public String Email { get; set; }
-        [Required]
-        public Dept? Department { get; set; }
+        [ForeignKey("DepartmentId")]
+        public int DepartmentId { get; set; }
+        public Department? Department { get; set; }
 
         public string? PhotoPath  { get; set; }
     }
