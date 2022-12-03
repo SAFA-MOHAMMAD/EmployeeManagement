@@ -8,9 +8,9 @@ namespace EmployeeManagement.Repository.Implemantation
     public class SQLEmployeeRepository : IEmployeeRepository
     {
         private readonly AppDbContext _dbContext;
-        public SQLEmployeeRepository(AppDbContext context)
+        public SQLEmployeeRepository(AppDbContext dbContext)
         {
-            _dbContext = context;
+            _dbContext = dbContext;
         }
         public Employee add(Employee employee)
         {
