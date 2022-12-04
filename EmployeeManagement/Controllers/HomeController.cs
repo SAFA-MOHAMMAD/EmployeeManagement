@@ -162,9 +162,13 @@ namespace EmployeeManagement.Controllers
             }
             return RedirectToAction("Index");
         }
+        [HttpPost]
+
         public IActionResult Search (string term, int dept) { 
 
-            var employees=_employeeRepository.Search(term);
+            var employees=_employeeRepository.Search(term , dept);
+            ViewBag.Departments = FillDepartmentList();
+
             return View("Index",employees);
         }
     }

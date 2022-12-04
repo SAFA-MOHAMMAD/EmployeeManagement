@@ -9,7 +9,7 @@ namespace EmployeeManagement.Repository.Interfaces
         Employee add(Employee employee);
         Employee Update(Employee employeeChanges);
         Employee Delete(int Id);
-        IEnumerable<Employee> Search(string term);
+        IEnumerable<Employee> Search(string term , int dept);
 
     }
 }

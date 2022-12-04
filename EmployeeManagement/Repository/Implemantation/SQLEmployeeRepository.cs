@@ -40,18 +40,19 @@ namespace EmployeeManagement.Repository.Implemantation
             return _dbContext.Employees.Include(d=>d.Department).FirstOrDefault(x=> x.Id == Id);
         }
 
-        public IEnumerable<Employee> Search(string term)
+        public IEnumerable<Employee> Search(string term , int dept)
         {
-            if (!String.IsNullOrEmpty(term))
-            {
+           
 
     return _dbContext.Employees.Include(d=>d.Department)
-                    .Where (x=>x.Name.Contains(term) || x.Email.Contains(term) || x.Department.Name.Contains(term)).ToList(); 
-            }
-            else
-            {
-                return _dbContext.Employees.Include(d => d.Department).ToList();
-            }
+                    .Where (
+        x=>((x.Name.Contains(term) ||string.IsNullOrEmpty(term))
+        || (x.Email.Contains(term)|| string.IsNullOrEmpty(term))
+        ||( x.Department.Name.Contains(term)|| string.IsNullOrEmpty(term)))&&
+        (x.DepartmentId.Equals(dept)||dept==-1)
+        ).ToList(); 
+            
+          
                 }
 
         public Employee Update(Employee employeeChanges)

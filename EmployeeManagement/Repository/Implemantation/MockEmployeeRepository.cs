@@ -49,7 +49,7 @@ namespace EmployeeManagement.Repository.Implemantation
             return employee;
         }
 
-        public IEnumerable<Employee> Search(string term)
+        public IEnumerable<Employee> Search(string term, int dept)
         {
             throw new NotImplementedException();
         }
